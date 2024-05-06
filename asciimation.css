@@ -5,14 +5,20 @@
     height: 100vh; 
 }
 
+
 #frames {
-    /* border: 1px solid black; */
+    display: flex;
+    justify-content: flex-start; /* Align items to the start of the container */
     padding: 10px;
     margin: 30px;
 }
 
+#ascii {
+    width: 60; /* Set a width for the divs */
+}
+
 pre {
-    border: 1px solid black;
+    border: 1px solid blue;
     padding: 10px;
     margin: 10px;
     max-height: calc(100vh - 60px); /* Viewport height minus total vertical margin */
@@ -23,13 +29,16 @@ pre {
     
 }
 #caption {
-    border: 1px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Full height of the parent */
 }
 
-#caption h2 {
+#caption p {
     color: #333;
     font-size: 1.5em;
-    font-weight: bold;
+    font-weight: normal;
     text-align: center;
     margin: 20px 0;
 }
