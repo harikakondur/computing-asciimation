@@ -669,33 +669,37 @@ async function startAnimation(asciiFrames, captionText, timing) {
 
     document.body.appendChild(framesDiv);
 
-     // Display the first frame
-     displayFrame(asciiFrames[0], asciiDiv, captionDiv);
+    // Display the first frame
+    displayFrame(asciiFrames[0], asciiDiv, captionDiv);
 
-     // Start the text animation
-     let textAnimationPromise = animateText(captionText, captionDiv, 'p');
- 
-     // Start the frame animation
-     let index = 0;
-     let frameAnimation = new Promise(async (resolve, reject) => {
-         while (true) {
-             await new Promise(r => setTimeout(r, timing));
-             index = (index + 1) % asciiFrames.length; // Loop back to the first frame
-             displayFrame(asciiFrames[index], asciiDiv);
-         }
-     });
- 
-     // Wait for the text animation to finish or the timeout to occur
-     await Promise.race([textAnimationPromise, new Promise(r => setTimeout(r, timing))]);
- 
-     // Stop the frame animation
-     frameAnimation = null;
+    // Start the text animation
+    let textAnimationPromise = animateText(captionText, captionDiv, 'p');
+
+    // Start the frame animation
+    let index = 0;
+    let frameAnimation = setInterval(() => {
+        index = (index + 1) % asciiFrames.length; // Loop back to the first frame
+        displayFrame(asciiFrames[index], asciiDiv);
+    }, 500);
+
+    // Wait for the text animation to finish
+    await textAnimationPromise;
+
+    // Stop the frame animation
+    clearInterval(frameAnimation);
+
+    // Wait for the timeout to occur
+    await new Promise(r => setTimeout(r, timing));
+
+    // Remove framesDiv from the body
+    document.body.removeChild(framesDiv);
 }
 
 async function start() {
     await welcome();
-    await startAnimation(ada_lovelace, "ada lovelace- the first computer programmer", 2000);
-    await startAnimation(grace_hopper, "some other caption", 1000);
+    await startAnimation(ada_lovelace, "ada lovelace- the first computer programmer", 3000);
+    await startAnimation(grace_hopper, "grace hopper", 3000);
+    await startAnimation(eniac,"eniac sjhdcgjasdvhbjahdgfhajiHSGDJAKhsgdfjahj",3000);
 }
 
 start();
