@@ -18,12 +18,11 @@
 }
 
 pre {
-    border: 1px solid blue;
     padding: 10px;
     margin: 10px;
     max-height: calc(100vh - 60px); /* Viewport height minus total vertical margin */
     max-width: calc(100vw - 60px); /* Viewport width minus total horizontal margin */
-    overflow: auto; /* Add scrollbars if the content is too large */
+    /* overflow: auto; Add scrollbars if the content is too large */
     font-size: 0.8em;
     width: max-content;
     
