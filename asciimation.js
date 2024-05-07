@@ -3086,7 +3086,7 @@ orgs=[
 &&&&&&&&&&&X&&$&&$&&&&$$$$X$&&$&&&&&&&&&&&&&&&&&&&&&XXXXxXxxxx+xX$$XxxxxX$$$$$XX$&&&&&&&&&&&&&&&&&&&&&&&&&&`
 ]
 
-           function animateText(text, elementId, textType) {
+function animateText(text, elementId, textType) {
 
     let index = 0;
     let currentText = '';
@@ -3099,7 +3099,7 @@ orgs=[
             element.innerHTML = currentText;
             index++;
             if (index < text.length) {
-                setTimeout(addLetter, 100); // Typing speed
+                setTimeout(addLetter, 75); // Typing speed
             } else {
                 resolve();
             }
@@ -3188,7 +3188,7 @@ async function start() {
     await startAnimation(decline,"However, the dramatic drop in the 1980s suggests a more nuanced story. ",2000);
     await startAnimation(computer,"Were women simply not interested anymore? ",2000);
     await startAnimation(factors,"The decline of women in computer science resulted from a plethora of factors, including active discouragement, gendered stereotypes, workplace bias, and broader societal shifts",1000);
-    await startAnimation(conclusion,"The good news? These factors specifically, not a lack of interest, explain the decline of women in computer science. Women have always been drawn to this field, and their potential remains vast!",2000);
+    await startAnimation(conclusion,"The good news? These factors explain the decline of women in computer science, NOT women's lack of interest. Women have always been drawn to this field, and their potential remains vast!",2000);
 
 }
 
